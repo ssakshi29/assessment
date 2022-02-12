@@ -42,13 +42,16 @@ function Homepage() {
                                 data.map((currelement,index) => {
                                 return (
                                     <div className="row" key={index}>
+                                        
                                         <div className="colsize">{currelement.name}</div>
                                         <div className="colsize">{currelement.company.name}</div>
                                         <div className="colsize">
-                                        <Link to={`/posts/${currelement.id}`}>Posts</Link>
+                                        
+                                        <Link to={`/Posts/${index+1}`}> BLOG POSTS</Link>
                                         </div>
                                     </div>
                                 )
+                        
                                 }
                                 )
                             }
