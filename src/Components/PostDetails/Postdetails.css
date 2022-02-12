@@ -1,0 +1,70 @@
+.header{
+    font-family: 'Playfair Display', serif;
+    font-family: 'Roboto', sans-serif;
+    font-weight: lighter;
+    font-size:large;
+    text-align: center;
+    margin-bottom:10px;
+    padding:10px 2px 10px 2px;
+    background-color: black;
+    color:whitesmoke;
+    height:40px;
+}
+
+.box{
+    height:fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    margin:auto;
+    width:50% ;
+    margin-top:40px;
+    padding:15px 15px 15px 15px;
+}
+
+.box1{
+    height:fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    margin:auto;
+    width:50% ;
+    margin-top:40px;
+    padding:15px 15px 15px 15px;
+    background-color: rgb(121, 113, 113);
+    color:aliceblue;
+}
+.box .title{
+   text-align: center;
+   font-weight: 600;
+   text-transform: uppercase;
+   margin-bottom:15px;
+}
+
+.box1 .title{
+    color:black;
+    text-transform: capitalize;
+    
+}
+
+.box1 .body{
+    text-align: center;
+    margin-top:3px;
+    margin-bottom:3px;
+    text-transform: initial;
+}
+.body:first-letter {
+    text-transform: capitalize;
+  }
+
+.button-container{
+    margin-top:10px;
+}
+.btn{
+    text-align: left;
+    vertical-align: center;
+
+}
+
+.btn1{
+   
+    /* text-align: right; */
+    vertical-align: center;
+    float: right;
+}

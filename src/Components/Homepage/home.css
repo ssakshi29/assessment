@@ -6,16 +6,17 @@
     padding:20px 20px 20px 20px;
   }
   
-  .heading{
+  .header_main{
     font-family: 'Playfair Display', serif;
     font-family: 'Roboto', sans-serif;
-    font-weight: bolder;
-    font-size:xx-large;
+    font-weight: lighter;
+    font-size:large;
     text-align: center;
     margin-bottom:10px;
-    padding:10px 10px 10px 10px;
+    padding:10px 2px 10px 2px;
     background-color: black;
     color:whitesmoke;
+    height:40px;
     }
 
   .table-responsive{

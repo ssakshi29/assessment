@@ -6,23 +6,19 @@ function Posts() {
 
       
       const {user_id}=useParams();
-    
       const [data,setData]=useState([]);
 
-    const getData = async () =>
+    useEffect(() => {
+      const getData = async () =>
     {
         const response=await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
         const actualData= await (response.json());
         console.log(actualData);
          setData(actualData);
     }
+      getData();
+     }, [user_id])
 
-
-    useEffect(() => {    
-      
-        getData();
-    }, )
-    
   return (
     <div>
        <div className="container ">
@@ -39,7 +35,7 @@ function Posts() {
                     <div className="right">
                   
                         <Link to={`/${user_id}/posts/${index+1}`}>
-                            <button className="button "> Click Me </button>
+                            <button className="button "> POST DETAILS </button>
                         </Link>
                        
                     </div>

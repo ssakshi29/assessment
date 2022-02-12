@@ -24,7 +24,7 @@ function Homepage() {
         
     <>
    
-            <div className="heading">
+            <div className="header_main">
                 Home
             </div>
             <div className="container-fluid ">
