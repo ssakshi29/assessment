@@ -24,11 +24,12 @@ function Homepage() {
         
     <>
    
-            <div className="">
-                 
+            <div className="heading">
+                Home
             </div>
             <div className="container-fluid ">
                     <div className="table-responsive">
+                        
                         <div >
                             <div className="thead-dark ">
                                 <div className="row">
