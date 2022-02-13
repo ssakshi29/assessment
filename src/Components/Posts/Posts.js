@@ -1,12 +1,14 @@
-import React, {useState,useEffect} from 'react';
+import React, {useEffect} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Post.css';
 
-function Posts() {
+function Posts({ data,setData }) {
 
       
       const {user_id}=useParams();
-      const [data,setData]=useState([]);
+      
+      console.log(data);
+
 
     useEffect(() => {
       const getData = async () =>
@@ -17,7 +19,8 @@ function Posts() {
          setData(actualData);
     }
       getData();
-     }, [user_id])
+     }, [])
+
 
   return (
     <div>

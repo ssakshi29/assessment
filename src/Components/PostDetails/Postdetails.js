@@ -1,14 +1,14 @@
 import React,{useState,useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import './Postdetails.css'
-
 function Postdetails() 
 {
 
    const {user_id, post_id}=useParams();
    const [details,setPostDetails] = useState([]);
    const [content,setContent] = useState([]);
-
+   let history= useHistory();
    
 
    useEffect(() => {
@@ -25,13 +25,22 @@ function Postdetails()
    }, [post_id])
   
 
+
    const showComment =async () => 
    {
       const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${post_id}/comments`);
       const actualData=await(response.json());
-       console.log(actualData);
        setContent(actualData);
    }
+   
+
+   const deletePost =async (id) =>
+   { 
+
+    }
+   
+    
+
 
 
   return (
@@ -51,7 +60,7 @@ function Postdetails()
                         <button className="button " onClick={showComment}> SHOW COMMENTS </button>
                     </span>
                     <span className="btn1">
-                        <button className="button " > DELETE POST</button>
+                        <button className="button "  onClick={deletePost}>DELETE POST</button>
                     </span>
                 </div>
         </div>
@@ -68,7 +77,7 @@ function Postdetails()
                         <div className="body">
                          {ele.body}
                         </div>
-                        <hr></hr>
+                        <hr/>
                     </div>
               )
           }

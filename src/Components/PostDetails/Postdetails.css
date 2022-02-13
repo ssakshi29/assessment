@@ -12,6 +12,7 @@
 }
 
 .box{
+  
     height:fit-content;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     margin:auto;
@@ -63,8 +64,12 @@
 }
 
 .btn1{
-   
-    /* text-align: right; */
     vertical-align: center;
     float: right;
 }
+
+@media screen and (max-height: 500px) {
+    .box{
+        height:400px;
+    }
+  }
