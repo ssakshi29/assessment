@@ -68,8 +68,11 @@
     float: right;
 }
 
+
+
 @media screen and (max-height: 500px) {
     .box{
-        height:400px;
+        height:1000px;
+        width:700px;
     }
   }

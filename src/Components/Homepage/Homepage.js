@@ -6,12 +6,15 @@ function Homepage() {
 
 
     const [data, setData] = useState([]);
+    const[Loading,setLoading] =useState(true)
+    const [searchCompany,setSearchCompany]=useState(" ")
 
     const getData = async ()=>{
        const res= await fetch('https://jsonplaceholder.typicode.com/users');
        const actualData= await (res.json());
-       console.log(actualData);
-       setData(actualData);    
+       setData(actualData);   
+       setLoading(false)
+
     }
    
 
@@ -19,13 +22,36 @@ function Homepage() {
       getData();
     }, [])
     
+    
+
+    let datasearch =data.filter((value) =>
+    {
+        if(searchCompany == " " )
+        return value;
+        else if(value.company.name.toLowerCase().includes(searchCompany.toLowerCase())  )
+              return value;
+
+    })
+
+    
+
+
 
  return (
         
     <>
-   
+            { Loading ? <h3>Loading..</h3>:
+            <div>
             <div className="header_main">
                 Home
+            </div>
+            <div className="search-wrap">
+               
+                <input type="text" 
+                 placeholder="Search Company..."
+                onChange={event =>
+                setSearchCompany(event.target.value)}
+                />
             </div>
             <div className="container-fluid ">
                     <div className="table-responsive">
@@ -40,7 +66,7 @@ function Homepage() {
                             </div>
                             <div>
                             {
-                                data.map((currelement,index) => {
+                               datasearch.map((currelement,index) => {
                                 return (
                                     <div className="row" key={index}>
                                         
@@ -60,6 +86,8 @@ function Homepage() {
                         </div>
                     </div>
         </div>
+        </div>
+            }
     </>  
 
 

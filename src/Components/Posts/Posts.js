@@ -1,43 +1,59 @@
-import React, {useEffect} from 'react';
+import React, {useEffect,useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import './Post.css';
 
 function Posts({ data,setData }) {
 
+   const {user_id}=useParams();
+   const[Loading,setLoading] =useState(true)
+   const [search,setSearch]=useState(" ")
+
+    useEffect(async () => {
       
-      const {user_id}=useParams();
-      
-      console.log(data);
+      const res= await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
+       const actualData= await (res.json());
+       console.log(actualData);
+       setData(actualData);   
+       setLoading(false) 
 
+     }, [user_id])
 
-    useEffect(() => {
-      const getData = async () =>
-    {
-        const response=await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
-        const actualData= await (response.json());
-        console.log(actualData);
-         setData(actualData);
-    }
-      getData();
-     }, [])
-
+     
+     let datasearch =data.filter((value) =>
+     {
+         if(search == " " )
+         return value;
+         else if(value.title.toLowerCase().includes(search.toLowerCase())  )
+               return value;
+     })
 
   return (
     <div>
+      {Loading ? <h3>Loading...</h3> :
+
        <div className="container ">
-          <div className="heading">
-             BLOG POSTS
-          </div>
+         <div className='heading'>
+            <span>
+               BLOG POSTS
+            </span>
+            <span  className="search-bar">
+                  <input type="text" 
+                  placeholder="Search Company..."
+                   onChange={event =>
+                   setSearch(event.target.value)}
+                  />
+            </span>
+         </div>
           {
-           data.map( (currelement,index) =>{
+         datasearch.map( (currelement,index) =>{
              return(
-                <div className="content" key={index}> 
+                <div key={index} className="content" key={index}> 
                     <div className="left">
-                       {currelement.title}
+                     {index+1} - {currelement.title}
                     </div>
                     <div className="right">
                   
-                        <Link to={`/${user_id}/posts/${index+1}`}>
+                        <Link to={`/${user_id}/posts/${currelement.id}`}>
                             <button className="button "> POST DETAILS </button>
                         </Link>
                        
@@ -48,9 +64,7 @@ function Posts({ data,setData }) {
            )
           }
        </div>
-
-      
-        
+      }
     </div>
   )
 }

@@ -1,5 +1,5 @@
-import React , {useEffect,useState,useCallback} from 'react'
-import {  Route, Switch} from 'react-router-dom';
+import React , {useState} from 'react'
+import { Route, Routes} from 'react-router-dom';
 import "./App.css";
 import Homepage from './Components/Homepage/Homepage';
 import Postdetails from './Components/PostDetails/Postdetails';
@@ -11,16 +11,15 @@ function App() {
    
   
   const [data,setData]=useState([]);
- 
- 
+
   return ( 
 
          <>
-            <Switch>
-              <Route exact path="/" component={Homepage} />
+            <Routes>
+              <Route exact path="/" element={<Homepage/>} />
               <Route exact path="/posts/:user_id" element= {<Posts data={data} setData={setData} />} />
-              <Route exact path="/:user_id/posts/:post_id" component={Postdetails}/>
-            </Switch>
+              <Route exact path="/:user_id/posts/:post_id" element={<Postdetails data={data} setData={setData} />}/>
+            </Routes>
          </>
      
   );
