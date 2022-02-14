@@ -8,23 +8,29 @@ function Posts({ data,setData }) {
    const[Loading,setLoading] =useState(true)
    const [search,setSearch]=useState(" ")
 
-    useEffect(async () => {
+    useEffect( () => {
       
-      const res= await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
+      const getUser =async  () =>{
+      const res=  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
        const actualData= await (res.json());
        console.log(actualData);
+       
        setData(actualData);   
        setLoading(false) 
+      }
+       getUser();
 
+       // eslint-disable-next-line
      }, [user_id])
 
      
      let datasearch =data.filter((value) =>
      {
-         if(search == " " )
+         if(search === " " )
          return value;
          else if(value.title.toLowerCase().includes(search.toLowerCase())  )
                return value;
+               return false
      })
 
   return (
@@ -47,7 +53,7 @@ function Posts({ data,setData }) {
           {
          datasearch.map( (currelement,index) =>{
              return(
-                <div key={index} className="content" key={index}> 
+                <div key={index} className="content" > 
                     <div className="left">
                      {index+1} - {currelement.title}
                     </div>

@@ -26,10 +26,11 @@ function Homepage() {
 
     let datasearch =data.filter((value) =>
     {
-        if(searchCompany == " " )
+        if(searchCompany === " " )
         return value;
         else if(value.company.name.toLowerCase().includes(searchCompany.toLowerCase())  )
               return value;
+            return false;
 
     })
 
