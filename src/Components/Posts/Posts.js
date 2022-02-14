@@ -10,15 +10,16 @@ function Posts({ data,setData }) {
 
     useEffect( () => {
       
-      const getUser =async  () =>{
-      const res=  fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`);
-       const actualData= await (res.json());
-       console.log(actualData);
-       
-       setData(actualData);   
-       setLoading(false) 
-      }
-       getUser();
+     
+        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${user_id}&skip=0&limit=10`)
+        .then((res)=>res.json())
+        .then(res=> {  setData(res);   
+          setLoading(false) })
+      
+
+      
+      
+      
 
        // eslint-disable-next-line
      }, [user_id])
